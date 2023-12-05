@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>Coversão de Volume</title>
+    <style>
+        body {
+            font-family: 'Montserrat';
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url(bg.jpg);
+            background-attachment: fixed;
+            background-size: cover; 
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 1;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 550px 0px;
+            background-image: url('ondas.png');
+            background-size: cover;
+            z-index: 1;
+            animation: mover 4s ease-in-out infinite;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        @keyframes mover {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(30px); }
+        100% { transform: translateY(0); }
+        }
+
+        h1 {
+            padding-top: 0px;
+            color: white;
+        }
+
+        .container {
+            width: 300px;
+            height: 350px;
+            text-align: center;  
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(41, 41, 41, 0.5);
+            box-shadow: 0 8px 32px 0 rgb(35, 38, 39);
+            backdrop-filter: blur( 13.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            z-index: 2;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+        }
+
+        button {
+            width: 150px;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.432);
+            border: none;
+            border-radius: 20px;
+            color: rgb(255, 255, 255);
+            font-weight: 00;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: black;
+            transition: 1s;
+        }
+
+        button:hover:after {
+            background-color: rgba(165, 10, 10, 0.959);
+            transition: 1s;
+            border-radius: 20px;
+            border: none;
+        }
+
+        .bt {
+            border: none;
+            z-index: 1;
+        }
+        
+        .bt:after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 100%;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            background-color: #663dff;
+            border-radius: 5px;
+            transition: all 1s ease;
+        }
+
+        .bt:hover {
+            color: #fff;
+        }
+
+        .bt:hover:after {
+            left: 0;
+            width: 100%;
+        }
+
+        #resultado {
+            font-weight: 600;
+            margin-top: 12px;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.548);
+            font-weight: 400;
+        }
+
+        a:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <img src="onda.png" alt="" id="ondas">
+    <div class="container">
+        <div>
+            <a href="index.html">❮ Voltar</a>
+        </div>
+        <h1>Conversão <br> de Volume</h1>
+        <input type="number" id="inputVolume" placeholder="Litros">
+        <button onclick="convertVolume()" class="bt">Converter</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function convertVolume() {
+            var volumeInLiters = document.getElementById("inputVolume").value;
+            
+            var volumeInMilliliters = volumeInLiters * 1000;
+            var volumeInDeciliters = volumeInLiters * 10;
+            var volumeInCentiliters = volumeInLiters * 100;
+
+            document.getElementById("resultado").innerHTML = 
+                "Mililitros: " + volumeInMilliliters + " ml" + "<br>" +
+                "Centilitros: " + volumeInCentiliters + " cl" + "<br>" +
+                "Decilitros: " + volumeInDeciliters + " dl";
+                
+        }
+    </script>
+</body>
+</html>
